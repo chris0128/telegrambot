@@ -4,8 +4,10 @@ from telegram.ext import Updater, MessageHandler, Filters
 # The messageHandler is used for all message updates
 import configparser
 import logging
+
+
 def main():
-# Load your token and create an Updater for your Bot
+    # Load your token and create an Updater for your Bot
     config = configparser.ConfigParser()
     config.read('config.ini')
     updater = Updater((config['TELEGRAM']['ACCESS_TOKEN']), use_context=True)
@@ -25,7 +27,8 @@ def echo(update, context):
     reply_message = update.message.text.upper()
     logging.info("Update: " + str(update))
     logging.info("context: " + str(context))
-    context.bot.send_message(chat_id=update.effective_chat.id, text= reply_message)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=reply_message)
+
 
 if __name__ == '__main__':
-     main()
+    main()
